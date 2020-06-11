@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: md-covid-images
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: md-covid-images
+  template:
+    metadata:
+      labels:
+        app: md-covid-images
+    spec:
+      containers:
+      - name: md-covid-images
+        image: mdcimage:latest
+      imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
