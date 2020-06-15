@@ -14,8 +14,6 @@ services:
     build: ./app
     container_name: md_images_server
     command: node index.js
-    volumes:
-      - ./app:/usr/src/app
     ports:
       - "3004:3001"
     image: md-images:1
