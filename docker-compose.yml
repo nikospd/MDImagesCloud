@@ -1,0 +1,23 @@
+version: '2'
+services:
+  db:
+    image: mysql
+    container_name: md_images_db
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    
+  node-server:
+    build: ./app
+    container_name: md_images_server
+    command: node index.js
+    volumes:
+      - ./app:/usr/src/app
+    ports:
+      - "3004:3001"
+    image: md-images:1
+    depends_on:
+      - "db"
