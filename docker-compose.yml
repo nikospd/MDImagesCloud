@@ -2,7 +2,7 @@ version: '2'
 services:
   db:
     image: mysql
-    container_name: md_images_db
+    container_name: md-images-db
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     volumes:
@@ -12,10 +12,8 @@ services:
     
   node-server:
     build: ./app
-    container_name: md_images_server
+    container_name: md-images-server
     command: node index.js
-    volumes:
-      - ./app:/usr/src/app
     ports:
       - "3004:3001"
     image: md-images:1
