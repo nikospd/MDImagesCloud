@@ -7,7 +7,7 @@ npm install
 npm start
 ``` 
 
-### Docker
+## Docker
 This option is when you want to run the application along with a mysql database into docker containers. 
 
 First we need to install the node packages because of the volume of the app container.
@@ -25,7 +25,7 @@ You can start and stop the containers with `docker-compose start/stop`
 
 And then type `localhost:3004` to your browser to access into the app 
 
-### Kubernetes 
+## Kubernetes 
 This option is for running this containers inside a cluster. Tested with kubernetes minikube for single node cluster
 
 The architecture of the cluster is very simple as it seems at the diagram below
