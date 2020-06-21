@@ -1,0 +1,40 @@
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: md-covid-images-server-svc
+      labels:
+        app: md-covid-images-server
+    spec:
+      type: NodePort
+      ports:
+      - port: 3001
+        nodePort: 30004
+      selector:
+        app: md-covid-images-server
+    
+    ---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: md-covid-images-server
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: md-covid-images-server
+      template:
+        metadata:
+          labels:
+        app: md-covid-images-server
+        spec:
+          containers:
+          - name: md-images-server
+            image: md-images:1
+            args: ["node", "index.js"]
+            imagePullPolicy: IfNotPresent
+            ports:
+        - containerPort: 3001
+          restartPolicy: Always
+    
+    
